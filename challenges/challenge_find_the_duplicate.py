@@ -14,7 +14,7 @@ def find_duplicate(nums):
         list_size = len(nums)
 
         merge_sort(nums)
-        validate_nums(nums, list_size)
+        # validate_nums(nums, list_size)
 
         for _ in range(list_size):
             if nums[target] == nums[next_target]:
