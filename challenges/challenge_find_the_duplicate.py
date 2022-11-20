@@ -1,30 +1,27 @@
-from challenges.merge_sort import merge_sort
-
-
-def validate_nums(nums, list_size):
-    if nums[0] < 0 or list_size < 1:
+def has_negative_number(nums):
+    if nums[0] < 0:
         raise ValueError
 
 
+def check_size(nums):
+    list_size = len(nums)
+    if list_size < 1:
+        raise ValueError
+
+    return list_size
+
+
 def find_duplicate(nums):
-    target = 0
-    next_target = 1
-
     try:
-        list_size = len(nums)
+        nums.sort()
+        list_size = check_size(nums)
+        has_negative_number(nums)
 
-        merge_sort(nums)
-        # validate_nums(nums, list_size)
+        for index in range(list_size - 1):
+            if nums[index] == nums[index + 1]:
+                return nums[index]
 
-        for _ in range(list_size):
-            if nums[target] == nums[next_target]:
-                return nums[target]
-            else:
-                move = 1
-                target += move
-                next_target += move
-
-    except (TypeError, IndexError, ValueError):
+    except (TypeError, ValueError):
         pass
 
     return False
